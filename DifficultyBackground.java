@@ -14,5 +14,6 @@ public class DifficultyBackground extends Actor
         if(MyWorld.Phase.equals("Lobby")){
             setLocation(1083,50);
         }
+        getWorld().removeObject(this);
     }
 }

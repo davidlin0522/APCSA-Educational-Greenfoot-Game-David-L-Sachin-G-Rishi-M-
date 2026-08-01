@@ -79,10 +79,13 @@ public class Enemy extends Actor
                    if (touching.Entity.equals("Player")) {
                        if (!name.equals("QuestionEnemy")){
                            getWorld().removeObject(this);
+                           shootSound.setVolume(0);
+                           kill.setVolume(80);
+                           kill.play();
+                    
                        }
-                       shootSound.setVolume(0);
-                       kill.setVolume(80);
-                       kill.play();
+                       
+                       
                    }
                }
            }

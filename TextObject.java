@@ -31,13 +31,35 @@ public class TextObject extends Actor
     public void setText(String newText)
     {
         this.text = newText;
+        if (newText.length() >= 3) {
+            if (newText.charAt(newText.length()-2) == 'a') {
+                this.text = newText.substring(0,newText.length()-2);
+                if (Greenfoot.isKeyDown(String.valueOf(newText.charAt(newText.length() - 1)))){
+                    MyWorld.questionOnScreen = false;
+                    System.out.println("answered question!");
+                    
+                    resetText();
+
+                    MyWorld.spawnEnemy = true;
+
+                }
+        }}
+        
         updateImage();
-    }
+        
+}
 
     private void updateImage()
     {
         // Creates a GreenfootImage out of the string text
         GreenfootImage img = new GreenfootImage(text, fontSize, textColor, backgroundColor);
         setImage(img);
+    }
+    public static void resetText() {
+        MyWorld.QEQuestion = "";
+        MyWorld.QEAnswer1 = "";
+        MyWorld.QEAnswer2 = "";
+        MyWorld.QEAnswer3 = "";
+        MyWorld.QEAnswer4 = "";
     }
 }

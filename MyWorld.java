@@ -3,6 +3,7 @@ import java.lang.*;
 import greenfoot.*;
 import greenfoot.GreenfootSound;
 import java.io.*;
+import java.util.*;
 
 /*made by Lero319/Leonard Rohatsch*/
 /*Remixed by David Lin, Rishi Mohanty and Sachin Gupta*/
@@ -33,6 +34,8 @@ public class MyWorld extends World
     public static String QEAnswer2 = "";
     public static String QEAnswer3 = "";
     public static String QEAnswer4 = "";
+    public static boolean questionOnScreen = false;
+    public static int questionNumber = 0;
     
     //Create and name the question objects.
     private TextObject questionText;
@@ -66,16 +69,16 @@ public class MyWorld extends World
         addObject(questionText, 600, 100);
     
         answer1Text = new TextObject("", 24, Color.WHITE);
-        addObject(answer1Text, 600, 180);
+        addObject(answer1Text, 600, 200);
     
         answer2Text = new TextObject("", 24, Color.WHITE);
-        addObject(answer2Text, 600, 220);
+        addObject(answer2Text, 600, 300);
     
         answer3Text = new TextObject("", 24, Color.WHITE);
-        addObject(answer3Text, 600, 260);
+        addObject(answer3Text, 600, 400);
     
         answer4Text = new TextObject("", 24, Color.WHITE);
-        addObject(answer4Text, 600, 300);
+        addObject(answer4Text, 600, 500);
         
         loadDifficutly();
         enemyShoot=false;
@@ -112,6 +115,7 @@ public class MyWorld extends World
     public void act(){
         //Initialize the names
         questionText.setText(QEQuestion);
+        
         answer1Text.setText(QEAnswer1);
         answer2Text.setText(QEAnswer2);
         answer3Text.setText(QEAnswer3);
@@ -175,8 +179,10 @@ public class MyWorld extends World
        if(spawnEnemy){
            if (enemy=="Question Enemy"){
                addObject(new QuestionEnemy(),1200,y);
+               questionOnScreen = true;
+               
            } else {
-               addObject(new Enemy(enemy),1200,y);   
+               addObject(new Enemy(enemy),1200,y);  
            }
           spawnEnemy=false; 
           anzahl++;
@@ -192,8 +198,8 @@ public class MyWorld extends World
            addObject(new Starfall(), 600, 100);
            addObject(new Player(), 600, 295);
            addObject(new Start(), 600, 500);
-           addObject(new DifficultyBackground(),1083,50);
-           addObject(new Difficulty("Difficulty",20),1148,58);
+           //addObject(new DifficultyBackground(),1083,50);
+           //addObject(new Difficulty("Difficulty",20),1148,58);
            addObject(new Mute(mute, true),1100,500);
            started=true;
        }

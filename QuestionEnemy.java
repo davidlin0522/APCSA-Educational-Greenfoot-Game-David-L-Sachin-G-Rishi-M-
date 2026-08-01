@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class QuestionEnemy here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * David Lin (your name) 
+ * 8/1/2026 (a version number or a date)
  */
 public class QuestionEnemy extends Enemy
 {
@@ -14,17 +14,30 @@ public class QuestionEnemy extends Enemy
      */
     public QuestionEnemy() {
         super("QuestionEnemy");
+        String[][] qBank = {{"What is 5+6","5","3","11a3","12"},{"What is 50*3","500","150a2","120","149"},{"What is 10+4","14a1","2","104","9"}};
+        if (MyWorld.questionNumber >=3) {
+            MyWorld.questionNumber = 0;
+        }
+        MyWorld.QEQuestion = qBank[MyWorld.questionNumber][0];
+        MyWorld.QEAnswer1 = qBank[MyWorld.questionNumber][1];
+        MyWorld.QEAnswer2 = qBank[MyWorld.questionNumber][2];
+        MyWorld.QEAnswer3 = qBank[MyWorld.questionNumber][3];
+        MyWorld.QEAnswer4 = qBank[MyWorld.questionNumber][4];
+        
+        
+        MyWorld.questionNumber++;
     }
     @Override
     public void act()
     {
         // Add your action code here.
         super.act();
-        MyWorld.QEQuestion = "Apple";
-        MyWorld.QEAnswer1 = "1";
-        MyWorld.QEAnswer2 = "2";
-        MyWorld.QEAnswer3 = "3         5";
-        MyWorld.QEAnswer4 = "4";
+        if (!MyWorld.questionOnScreen) {
+            shootSound.setVolume(0);
+            kill.setVolume(80);
+            kill.play();
+            getWorld().removeObject(this);
+        }
         /* Original kill code: 
         if (touching!= null) {
                if(getWorld()!=null||this.name!=null){

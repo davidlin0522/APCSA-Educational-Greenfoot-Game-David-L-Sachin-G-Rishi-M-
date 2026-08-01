@@ -75,5 +75,7 @@ public class Difficulty extends Actor
             }
         }
         update(difficulty);
+        setLocation(1141,58);
+        getWorld().removeObject(this);
     }
 }
