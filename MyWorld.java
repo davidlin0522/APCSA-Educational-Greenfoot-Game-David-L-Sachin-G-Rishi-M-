@@ -35,7 +35,8 @@ public class MyWorld extends World
     public static String QEAnswer3 = "";
     public static String QEAnswer4 = "";
     public static boolean questionOnScreen = false;
-    public static int questionNumber = 0;
+    
+    private static int worldQuestionNumber = 0;
     
     //Create and name the question objects.
     private TextObject questionText;
@@ -256,4 +257,11 @@ public class MyWorld extends World
             System.out.println("Konnte Difficulty nicht speichern.");
         }
     }
+    public static void setWorldQuestionNumber(int n) { //use of static methods
+        worldQuestionNumber = n;
+    }
+    public static int getWorldQuestionNumber() { // use of static methods
+        return worldQuestionNumber;
+    }
+    
 }

@@ -49,17 +49,17 @@ public class TextObject extends Actor
         
 }
 
-    private void updateImage()
-    {
-        // Creates a GreenfootImage out of the string text
-        GreenfootImage img = new GreenfootImage(text, fontSize, textColor, backgroundColor);
-        setImage(img);
-    }
-    public static void resetText() {
-        MyWorld.QEQuestion = "";
-        MyWorld.QEAnswer1 = "";
-        MyWorld.QEAnswer2 = "";
-        MyWorld.QEAnswer3 = "";
-        MyWorld.QEAnswer4 = "";
-    }
+private void updateImage()
+{
+    // Creates a GreenfootImage out of the string text
+    GreenfootImage img = new GreenfootImage(text, fontSize, textColor, backgroundColor);
+    setImage(img);
+}
+public static void resetText() {  // Static method
+    MyWorld.QEQuestion = "";
+    MyWorld.QEAnswer1 = "";
+    MyWorld.QEAnswer2 = "";
+    MyWorld.QEAnswer3 = "";
+    MyWorld.QEAnswer4 = "";
+}
 }

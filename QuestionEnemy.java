@@ -15,17 +15,17 @@ public class QuestionEnemy extends Enemy
     public QuestionEnemy() {
         super("QuestionEnemy");
         String[][] qBank = {{"What is 5+6","5","3","11a3","12"},{"What is 50*3","500","150a2","120","149"},{"What is 10+4","14a1","2","104","9"}};
-        if (MyWorld.questionNumber >=3) {
-            MyWorld.questionNumber = 0;
+        if (MyWorld.getWorldQuestionNumber() >=3) {
+            MyWorld.setWorldQuestionNumber(0);
         }
-        MyWorld.QEQuestion = qBank[MyWorld.questionNumber][0];
-        MyWorld.QEAnswer1 = qBank[MyWorld.questionNumber][1];
-        MyWorld.QEAnswer2 = qBank[MyWorld.questionNumber][2];
-        MyWorld.QEAnswer3 = qBank[MyWorld.questionNumber][3];
-        MyWorld.QEAnswer4 = qBank[MyWorld.questionNumber][4];
+        MyWorld.QEQuestion = qBank[MyWorld.getWorldQuestionNumber()][0];
+        MyWorld.QEAnswer1 = qBank[MyWorld.getWorldQuestionNumber()][1];
+        MyWorld.QEAnswer2 = qBank[MyWorld.getWorldQuestionNumber()][2];
+        MyWorld.QEAnswer3 = qBank[MyWorld.getWorldQuestionNumber()][3];
+        MyWorld.QEAnswer4 = qBank[MyWorld.getWorldQuestionNumber()][4];
         
         
-        MyWorld.questionNumber++;
+        MyWorld.setWorldQuestionNumber(MyWorld.getWorldQuestionNumber()+1);
     }
     @Override
     public void act()
