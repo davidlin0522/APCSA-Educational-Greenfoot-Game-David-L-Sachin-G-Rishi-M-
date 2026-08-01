@@ -27,6 +27,8 @@ public class Enemy extends Actor
         else if(name.equals("Enemy3")){
             setImage("Enemy31.png");
             this.x=x;
+        } else if(name.equals("QuestionEnemy")){
+            setImage("QuestionEnemy.png");
         }
         GreenfootImage img = getImage();
         img.scale(80,40);
@@ -75,7 +77,9 @@ public class Enemy extends Actor
            if (touching!= null) {
                if(getWorld()!=null||this.name!=null){
                    if (touching.Entity.equals("Player")) {
-                       getWorld().removeObject(this);
+                       if (!name.equals("QuestionEnemy")){
+                           getWorld().removeObject(this);
+                       }
                        shootSound.setVolume(0);
                        kill.setVolume(80);
                        kill.play();

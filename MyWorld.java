@@ -5,6 +5,7 @@ import greenfoot.GreenfootSound;
 import java.io.*;
 
 /*made by Lero319/Leonard Rohatsch*/
+/*Remixed by David Lin, Rishi Mohanty and Sachin Gupta*/
 
 public class MyWorld extends World
 {
@@ -25,6 +26,21 @@ public class MyWorld extends World
     public static boolean started;
     public static int spawnDelay;
     public static boolean mute=false;
+    
+    //Create static variables for Questions and answers
+    public static String QEQuestion = "";
+    public static String QEAnswer1 = "";
+    public static String QEAnswer2 = "";
+    public static String QEAnswer3 = "";
+    public static String QEAnswer4 = "";
+    
+    //Create and name the question objects.
+    private TextObject questionText;
+    private TextObject answer1Text;
+    private TextObject answer2Text;
+    private TextObject answer3Text;
+    private TextObject answer4Text;
+    
     GreenfootSound music=new GreenfootSound("music.mp3");
     GreenfootSound playerShoot = new GreenfootSound("shoot.mp3");
     public MyWorld()
@@ -44,6 +60,23 @@ public class MyWorld extends World
         addObject(new DifficultyBackground(),1083,50);
         addObject(new Difficulty("Difficulty",20),1148,58);
         addObject(new Mute(mute, true),1100,500);
+        
+        //create the TextObjects
+        questionText = new TextObject("", 30, Color.WHITE);
+        addObject(questionText, 600, 100);
+    
+        answer1Text = new TextObject("", 24, Color.WHITE);
+        addObject(answer1Text, 600, 180);
+    
+        answer2Text = new TextObject("", 24, Color.WHITE);
+        addObject(answer2Text, 600, 220);
+    
+        answer3Text = new TextObject("", 24, Color.WHITE);
+        addObject(answer3Text, 600, 260);
+    
+        answer4Text = new TextObject("", 24, Color.WHITE);
+        addObject(answer4Text, 600, 300);
+        
         loadDifficutly();
         enemyShoot=false;
         Phase = "Lobby";
@@ -77,6 +110,14 @@ public class MyWorld extends World
         CooldownOverlay.shooting=true;
     }
     public void act(){
+        //Initialize the names
+        questionText.setText(QEQuestion);
+        answer1Text.setText(QEAnswer1);
+        answer2Text.setText(QEAnswer2);
+        answer3Text.setText(QEAnswer3);
+        answer4Text.setText(QEAnswer4);
+
+        
        music.playLoop();
        if(mute){
            music.setVolume(0);
@@ -132,9 +173,14 @@ public class MyWorld extends World
            addObject(new Menü(),1140,50);
        }
        if(spawnEnemy){
-           addObject(new Enemy(enemy),1200,y);
-           spawnEnemy=false;
-           anzahl++;
+           if (enemy=="Question Enemy"){
+               addObject(new QuestionEnemy(),1200,y);
+           } else {
+               addObject(new Enemy(enemy),1200,y);   
+           }
+          spawnEnemy=false; 
+          anzahl++;
+           
        }
        if(counter==spawnDelay){
            counter=0;
@@ -154,7 +200,7 @@ public class MyWorld extends World
        if(Phase.equals("Starting")){
            score=0;
        }
-       random=4-Greenfoot.getRandomNumber(4);
+       random=1+Greenfoot.getRandomNumber(4);
        y=540-Greenfoot.getRandomNumber(420);
        if(random==1){
            enemy="Enemy1";
@@ -165,6 +211,13 @@ public class MyWorld extends World
        if(random==3){
            enemy="Enemy3";
        }
+       
+       
+       if (random==4) {
+           enemy="Question Enemy";
+       } //NEW QUESTION ENEMY!!
+       
+       
        if(anzahl==3){
            spawnEnemy=false;
        }
