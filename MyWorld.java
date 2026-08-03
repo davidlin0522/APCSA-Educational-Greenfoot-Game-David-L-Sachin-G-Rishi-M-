@@ -20,7 +20,7 @@ public class MyWorld extends World
     public static int anzahl;
     public static int counter;
     public static int y;
-    public static int score;
+    
     public static int yEnemyShoot;
     public static String nameEnemyShoot;
     public static boolean enemyShoot;
@@ -36,7 +36,8 @@ public class MyWorld extends World
     public static String QEAnswer4 = "";
     public static boolean questionOnScreen = false;
     
-    private static int worldQuestionNumber = 0;
+    
+    private static int score;
     
     //Create and name the question objects.
     private TextObject questionText;
@@ -213,10 +214,10 @@ public class MyWorld extends World
            enemy="Enemy1";
        }
        if(random==2){
-           enemy="Enemy2";
+           enemy="Question Enemy";
        }
        if(random==3){
-           enemy="Enemy3";
+           enemy="Question Enemy";
        }
        
        
@@ -257,11 +258,11 @@ public class MyWorld extends World
             System.out.println("Konnte Difficulty nicht speichern.");
         }
     }
-    public static void setWorldQuestionNumber(int n) { //use of static methods
-        worldQuestionNumber = n;
+    public static void setScore(int n) { //use of static methods
+        score = n;
     }
-    public static int getWorldQuestionNumber() { // use of static methods
-        return worldQuestionNumber;
+    public static int getScore() { // use of static methods
+        return score;
     }
     
 }

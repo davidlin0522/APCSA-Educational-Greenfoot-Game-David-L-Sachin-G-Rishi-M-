@@ -39,17 +39,21 @@ public class QuestionEnemy extends Enemy
         }
         
         
-        if (MyWorld.getWorldQuestionNumber() >=3) {
-            MyWorld.setWorldQuestionNumber(0);
-        }
-        MyWorld.QEQuestion = qBank[MyWorld.getWorldQuestionNumber()][0];
-        MyWorld.QEAnswer1 = qBank[MyWorld.getWorldQuestionNumber()][1];
-        MyWorld.QEAnswer2 = qBank[MyWorld.getWorldQuestionNumber()][2];
-        MyWorld.QEAnswer3 = qBank[MyWorld.getWorldQuestionNumber()][3];
-        MyWorld.QEAnswer4 = qBank[MyWorld.getWorldQuestionNumber()][4];
         
         
-        MyWorld.setWorldQuestionNumber(MyWorld.getWorldQuestionNumber()+1);
+        
+        
+        
+        
+        
+        
+    
+        MyWorld.QEQuestion = qBank[0][0];
+        MyWorld.QEAnswer1 = qBank[0][1];
+        MyWorld.QEAnswer2 = qBank[0][2];
+        MyWorld.QEAnswer3 = qBank[0][3];
+        MyWorld.QEAnswer4 = qBank[0][4];
+        
     }
     @Override
     public void act()
@@ -61,6 +65,7 @@ public class QuestionEnemy extends Enemy
             kill.setVolume(80);
             kill.play();
             getWorld().removeObject(this);
+            MyWorld.setScore(MyWorld.getScore()+1);
         }
         /* Original kill code: 
         if (touching!= null) {

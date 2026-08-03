@@ -98,7 +98,9 @@ public class shoot extends Actor
                         GreenfootImage gone=getImage();
                         gone.setTransparency(0);
                         MyWorld.anzahl-=inRange;
-                        MyWorld.score++;
+               
+                        MyWorld.setScore(MyWorld.getScore()+1);
+                        
                     }
                     if(isTouching(Enemy.class)){
                         touching=true;
