@@ -8,8 +8,8 @@ import java.util.*;
 /*made by Lero319/Leonard Rohatsch*/
 /*Remixed by David Lin, Rishi Mohanty and Sachin Gupta*/
 
-public class MyWorld extends World
-[
+public class MyWorld extends World {
+
     public static String Phase;
     public static String enemy;
     public static boolean start;
@@ -214,7 +214,7 @@ public class MyWorld extends World
            enemy="Enemy1";
        }
        if(random==2){
-           enemy="Question Enemy";
+           enemy="Enemy2";
        }
        if(random==3){
            enemy="Question Enemy";
