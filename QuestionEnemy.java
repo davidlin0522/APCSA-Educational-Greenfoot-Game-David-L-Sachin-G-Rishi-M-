@@ -1,11 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
-/**
- * Write a description of class QuestionEnemy here.
- * 
- * David Lin (your name) 
- * 8/1/2026 (a version number or a date)
- */
+
+
 public class QuestionEnemy extends Enemy
 {
     /**
@@ -14,7 +10,35 @@ public class QuestionEnemy extends Enemy
      */
     public QuestionEnemy() {
         super("QuestionEnemy");
-        String[][] qBank = {{"What is 5+6","5","3","11a3","12"},{"What is 50*3","500","150a2","120","149"},{"What is 10+4","14a1","2","104","9"}};
+        Random rand = new Random();
+        String[][] qBank = new String[3][5];
+        // populate qBank with random questions
+        for (int i = 0; i < qBank.length; i++) {
+            int num1 = rand.nextInt(10) + 1;
+            int num2 = rand.nextInt(10) + 1;
+            int ans = num1 + num2;
+        
+            qBank[i][0] = "What is " + num1 + " + " + num2;
+        
+            String[] answers = new String[3];
+            answers[0] = Integer.toString(ans + rand.nextInt(5) + 1);
+            answers[1] = Integer.toString(ans - rand.nextInt(5) - 1);
+            answers[2] = Integer.toString(ans + rand.nextInt(10) + 6);
+        
+            int correctPos = rand.nextInt(4);
+        
+            int wrongIndex = 0;
+            for (int j = 0; j < 4; j++) {
+                if (j == correctPos) {
+                    qBank[i][j + 1] = ans + "a" + (j + 1);
+                } else {
+                    qBank[i][j + 1] = answers[wrongIndex];
+                    wrongIndex++;
+                }
+            }
+        }
+        
+        
         if (MyWorld.getWorldQuestionNumber() >=3) {
             MyWorld.setWorldQuestionNumber(0);
         }
