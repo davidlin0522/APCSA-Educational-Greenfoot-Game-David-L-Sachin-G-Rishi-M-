@@ -9,7 +9,7 @@ import java.util.*;
 /*Remixed by David Lin, Rishi Mohanty and Sachin Gupta*/
 
 public class MyWorld extends World
-{
+[
     public static String Phase;
     public static String enemy;
     public static boolean start;
