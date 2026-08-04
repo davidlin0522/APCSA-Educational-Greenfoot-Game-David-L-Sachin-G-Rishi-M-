@@ -37,16 +37,6 @@ public class QuestionEnemy extends Enemy
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     
         MyWorld.QEQuestion = qBank[0][0];
         MyWorld.QEAnswer1 = qBank[0][1];

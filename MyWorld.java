@@ -36,7 +36,7 @@ public class MyWorld extends World {
     public static String QEAnswer4 = "";
     public static boolean questionOnScreen = false;
     
-    
+    //ACCESS
     private static int score;
     
     //Create and name the question objects.
@@ -113,6 +113,12 @@ public class MyWorld extends World {
         started=false;
         menü=false;
         CooldownOverlay.shooting=true;
+        
+        //Use of static methods
+        TextObject.resetText();
+        //This removes the text, when the user leaves the game when theres a question enemy. 
+        
+        
     }
     public void act(){
         //Initialize the names

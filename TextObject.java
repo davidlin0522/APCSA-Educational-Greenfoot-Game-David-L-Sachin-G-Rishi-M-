@@ -13,7 +13,7 @@ public class TextObject extends Actor
     private String text;
     private int fontSize;
     private Color textColor;
-    private Color backgroundColor;
+    private Color backgroundColor; //ACCESS
 
     public TextObject(String text, int fontSize, Color textColor)
     {

@@ -17,7 +17,7 @@ public class Score extends Actor
         img.drawString(newText, 5, font.getSize());
     }
     public void act(){
-        update("Score: "+ MyWorld.getScore());
+        update("Score: "+ MyWorld.getScore()); // Call to global static
         if(MyWorld.Phase.equals("Starting")&&(249>getX())){
             setRotation(0);
             move(3);
